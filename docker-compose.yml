@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    container_name: demo_sql
+  rust:
+    build:
+      context: .
+      dockerfile: ./docker/rust/Dockerfile
+    environment:
+      USER: root
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/Processing_speed_measurement_by_Rust
+    depends_on:
+      - db
+    container_name: demo_rust
+    
