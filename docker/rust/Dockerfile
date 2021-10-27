@@ -1,4 +1,4 @@
-FROM rust:latest
+FROM rust:1.54
 
 WORKDIR /Processing_speed_measurement_by_Rust
 
