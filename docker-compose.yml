@@ -15,10 +15,9 @@ services:
             dockerfile: ./docker/rust/Dockerfile
         environment:
             USER: root
-        ports:
-            - 8000:8000
+            command: cargo watch -x "run" -w src
         volumes:
-            - ./:/Processing_speed_measurement_by_Rust
+            - .:/app
         depends_on:
             - db
         container_name: demo_rust
